@@ -47,3 +47,7 @@
 <a href="https://t.me/M8N_SUPPORT"><img src="https://img.shields.io/badge/Join-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a><br>
 <a href="https://t.me/M8N_OFFICIAL"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a><br>
 <a href="https://t.me/Its_romeoo"><img src="https://img.shields.io/badge/Contact-Bot%20Developer-blue.svg?style=for-the-badge&logo=Telegram"></a>
+
+## License
+
+Distributed under the [GNU General Public License v3.0 License](https://github.com/UnknownMortal/M8N-Music-Bot/blob/main/LICENSE) See `LICENSE.md` for more information.
