@@ -1,4 +1,4 @@
-<p align="center"><a href="https://t.me/VeezMusicBot"><img src="https://github.com/levina-lab/VeezMusic/raw/main/etc/veezlogo.png"></a></p>
+<p align="center"><a href="https://telegra.ph/file/00a389a0c21a632ee29aa.jpg"></a></p>
 <p align="center">
     <br><b>M8N Music is a telegram bot project that's allow you to play music on telegram voice chat group</b><br>
 </p>
