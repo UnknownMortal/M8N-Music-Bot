@@ -1,5 +1,4 @@
-# <p align="center"><a href="https://github.com/UnknownMortal/M8N-Music-Bot"><img src="https://github-readme-stats.vercel.app/api/pin?username=UnknownMortal&show_icons=true&theme=dracula&hide_border=true&repo=M8N-Music-Bot"></a></p>
-<p align="center">
+
 
 ### A powerful bot that can play music on telegram group's voice chat with some useful features !!
 
