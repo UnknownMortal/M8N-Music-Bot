@@ -12,12 +12,8 @@ from m8n.config import BOT_USERNAME
 
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
-    await message.reply_photo(
-        photo=f"https://telegra.ph/file/a1545c8325298c7a51b15.jpg",
-        caption=f"""**Hello 👋 {message.from_user.mention()}**
-This is Montaro Super Bot, a bot for playing high quality and unbreakable music in your groups voice chat.
-Just add me to your group and make a admin with needed admin permission to perform a right actions !!
-Use the given buttons for more 📍""",
+    await message.reply_text(
+        f""" """,
     reply_markup=InlineKeyboardMarkup(
             [
                 [
