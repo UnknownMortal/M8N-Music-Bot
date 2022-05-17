@@ -40,3 +40,10 @@
 # Deployment
 <h4>Click the button below to deploy Bot on Heroku!</h4>    
 <p><a href="https://heroku.com/deploy"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200""/></a></p>
+
+
+## Contact & Support
+
+<a href="https://t.me/M8N_SUPPORT"><img src="https://img.shields.io/badge/Join-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a><br>
+<a href="https://t.me/M8N_OFFICIAL"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a><br>
+<a href="https://t.me/Its_romeoo"><img src="https://img.shields.io/badge/Contact-Bot%20Developer-blue.svg?style=for-the-badge&logo=Telegram"></a>
