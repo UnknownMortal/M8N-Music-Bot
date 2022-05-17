@@ -10,4 +10,4 @@ from m8n.tgcalls.calls import client
 if "raw_files" not in listdir():
     mkdir("raw_files")
 
-from oda.tgcalls.convert import convert
+from m8n.tgcalls.convert import convert
