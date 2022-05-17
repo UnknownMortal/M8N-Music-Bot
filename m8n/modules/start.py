@@ -24,11 +24,11 @@ Use the given buttons for more 📍""",
                     InlineKeyboardButton(
                         "Source Code", url=f"https://github.com/UnknownMortal/M8N-Music-Bot"),
                     InlineKeyboardButton(
-                        "Commands", callback_data=" ")
+                        "Commands", callback_data="cbcmnds")
                 ],
                 [
                     InlineKeyboardButton(
-                        "✚ Add Bot in Your Group", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "✚ Add Bot in Your Group ✚", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ]
            ]
         ),
