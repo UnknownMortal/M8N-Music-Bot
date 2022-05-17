@@ -1,9 +1,9 @@
 @Client.on_callback_query(filters.regex("cbhome"))
 async def cbhome(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""Welcome [👋]({START_PIC}) [{query.message.chat.first_name}](tg://user?id={query.message.chat.id})
+        f"""**Welcome [👋]({START_PIC}) [{query.message.chat.first_name}](tg://user?id={query.message.chat.id})**
 
-This is the {Music_Bot}, a Bot for playing high quality and unbreakable music in your groups voice chat.
+This is the {BOT_NAME}, a Bot for playing high quality and unbreakable music in your groups voice chat.
 
 Just add me to your group and make a admin with needed admin permission to perform a right actions !!
 
