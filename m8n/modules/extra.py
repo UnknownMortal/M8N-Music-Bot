@@ -10,20 +10,6 @@ from telegraph import upload_file
 from typing import Callable, Coroutine, Dict, List, Tuple, Union
 from json import JSONDecodeError
 from pyrogram import Client, filters
-import os
-import asyncio
-import time
-import shlex
-import requests
-import re
-import aiofiles
-import aiohttp
-from telegraph import upload_file
-from io import BytesIO
-from typing import Callable, Coroutine, Dict, List, Tuple, Union
-from json import JSONDecodeError
-from pyrogram.types import InlineKeyboardButton, Message
-from pyrogram import Client, filters
 from m8n.config import BOT_USERNAME
 
 
