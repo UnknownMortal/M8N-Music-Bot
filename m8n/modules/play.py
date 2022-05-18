@@ -331,7 +331,7 @@ async def play(_, message: Message):
 
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)
-        file_path = await oda.tgcalls.convert(
+        file_path = await m8n.tgcalls.convert(
             (await message.reply_to_message.download(file_name))
             if not path.isfile(path.join("downloads", file_name))
             else file_name
@@ -449,16 +449,16 @@ async def play(_, message: Message):
 
         loop = asyncio.get_event_loop()
         x = await loop.run_in_executor(None, youtube.download, url, my_hook)
-        file_path = await oda.tgcalls.convert(x)
+        file_path = await m8n.tgcalls.convert(x)
     else:
         if len(message.command) < 2:
             return await lel.edit(
-                "🧐 **Song not found !! Try searching with the correct title**"
+                "❌ **Song not found !! Try searching with the correct title**"
             )
         await lel.edit("🔎 **Finding the song...**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("🎵 **Processing sounds...**")
+        await lel.edit("**Joining Voice Chat !!**")
         try:
             results = YoutubeSearch(query, max_results=5).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -569,7 +569,7 @@ async def play(_, message: Message):
 
         loop = asyncio.get_event_loop()
         x = await loop.run_in_executor(None, youtube.download, url, my_hook)
-        file_path = await oda.tgcalls.convert(x)
+        file_path = await m8n.tgcalls.convert(x)
 
     if await is_active_chat(message.chat.id):
         position = await queues.put(message.chat.id, file=file_path)
