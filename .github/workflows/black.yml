@@ -21,8 +21,8 @@ jobs:
           title: Format code.
           body: Automated code formatting.
           labels: ⚫️ black
-          branch: autofix
-          committer: UserLazy <78595134+UserLazy@users.noreply.github.com>
+          branch: master
+          committer: UnknownMortal <78595134+UserLazy@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: true
           delete-branch: true
