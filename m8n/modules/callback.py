@@ -35,10 +35,10 @@ Check out all the commands given below by Click on the given inline buttons !!""
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Sudo Users", callback_data=" "),
+                    InlineKeyboardButton("Sudo Users", callback_data="cbsudo"),
                 ],[
                     InlineKeyboardButton("Everyone", callback_data="cbevery"),
-                    InlineKeyboardButton("Group Admins", callback_data=" "),
+                    InlineKeyboardButton("Group Admins", callback_data="cbadmins"),
                 ],[
                     InlineKeyboardButton("🔙 Go Back", callback_data="cbhome")
                 ],
@@ -51,7 +51,23 @@ Check out all the commands given below by Click on the given inline buttons !!""
 @Client.on_callback_query(filters.regex("cbevery"))
 async def cbcmnds(_, query: CallbackQuery):
         await query.edit_message_text(
-        f""" """,
+        f"""• /play (song name) or (YT link)
+- plays the song in voice chat of your group 
+
+• /song (song name) or (YT link)
+- Downloads song in audio File 
+
+• /tgm or /telegraph
+- generate the link of given media
+
+• /info 
+- show all the information about a given user
+
+• /search or /yt
+- search link of the given song
+
+• @botusername <query> 
+- Get youtube url by inline mode""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -63,10 +79,23 @@ async def cbcmnds(_, query: CallbackQuery):
 
 # Commands for SudoUsers
 
-@Client.on_callback_query(filters.regex("cbevery"))
+@Client.on_callback_query(filters.regex("cbsudo"))
 async def cbcmnds(_, query: CallbackQuery):
         await query.edit_message_text(
-        f""" """,
+        f"""• /restart 
+- restarts the bot in Heroku 
+
+• /gcast 
+- broadcast your message with pin in the served Chats
+
+• /broadcast 
+- broadcast your message without pin in the served chats
+
+• /exec <code> 
+- Execute any Code given by a sudo user of the bot
+
+• /userbotleaveall
+- force the music assistant of the bot to leave all the served Chats""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -78,10 +107,29 @@ async def cbcmnds(_, query: CallbackQuery):
 
 # Commands for Group Admins
 
-@Client.on_callback_query(filters.regex("cbevery"))
+@Client.on_callback_query(filters.regex("cbadmins"))
 async def cbcmnds(_, query: CallbackQuery):
         await query.edit_message_text(
-        f""" """,
+        f"""• /skip 
+- skips music in the voice Chat 
+
+• /pause 
+- Pause music in the voice chat 
+
+• /resume 
+- Resumes music in the voice Chat
+
+• /end or /stop
+- stop playing music in the group's voice chat
+
+• /cleandb
+- Clears all raw files in your group which is uploaded by bot
+
+• /userbotjoin
+- invites the music assistant of the bot in your group
+
+• /userbotleave
+- Bot's music assistant will leaves your group""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
