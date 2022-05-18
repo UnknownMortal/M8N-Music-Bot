@@ -35,10 +35,10 @@ Check out all the commands given below by Click on the given inline buttons !!""
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(" ", callback_data=" "),
+                    InlineKeyboardButton("Sudo Users", callback_data=" "),
                 ],[
-                    InlineKeyboardButton(" ", callback_data=" "),
-                    InlineKeyboardButton(" ", callback_data=" "),
+                    InlineKeyboardButton("Everyone", callback_data=" "),
+                    InlineKeyboardButton("Group Admins", callback_data=" "),
                 ],[
                     InlineKeyboardButton("🔙 Go Back", callback_data="cbhome")
                 ],
