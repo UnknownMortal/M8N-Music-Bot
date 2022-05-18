@@ -25,7 +25,7 @@ Use the given buttons for more 📍""",
             [
                 [
                     InlineKeyboardButton(
-                        "Source Code", url=f"https://github.com/UnknownMortal/M8N-Music-Bot"),
+                        "About", callback_data="cbabout"),
                     InlineKeyboardButton(
                         "Commands", callback_data="cbcmds")
                 ],
