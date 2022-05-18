@@ -12,7 +12,7 @@ Use the given buttons for more 📍""",
             [
                 [
                     InlineKeyboardButton(
-                        "Source code", url=f"https://github.com/UnknownMortal/M8N-Music-Bot"),
+                        "About", callback_data="cbabout"),
                     InlineKeyboardButton(
                         "Commands", callback_data="cbcmds")
                 ],
@@ -134,6 +134,21 @@ async def cbcmnds(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")
+                ],
+            ]
+        ),
+    )
+
+# Bot about & Information
+
+@Client.on_callback_query(filters.regex("cbabout"))
+async def cbcmnds(_, query: CallbackQuery):
+        await query.edit_message_text(
+        f""" """,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🔙 Go Back", callback_data="cbhome")
                 ],
             ]
         ),
