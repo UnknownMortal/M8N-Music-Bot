@@ -1,5 +1,9 @@
 from m8n.config import BOT_USERNAME
 from m8n.config import START_PIC
+from m8n.config import OWNER_ID
+from m8n.config import ASSUSERNAME
+from m8n.config import UPDATE
+from m8n.config import SUPPORT
 
 
 @Client.on_callback_query(filters.regex("cbhome"))
@@ -154,11 +158,11 @@ Click on the given inline buttons to know all the information about the Bot !!""
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📨 Support", url=f"https://t.me/{ }"),
-                    InlineKeyboardButton("📨 Updates", url=f"https://t.me/{OWNER_USERNAME}")
+                    InlineKeyboardButton("📨 Support", url=f"https://t.me/{SUPPORT}"),
+                    InlineKeyboardButton("📨 Updates", url=f"https://t.me/{UPDATE}")
                 ],[
                     InlineKeyboardButton("👤 Owner", url=f"https://t.me/{GROUP_SUPPORT}"),
-                    InlineKeyboardButton("🎸 Assistant", url=f"https://t.me/{UPDATES_CHANNEL}")
+                    InlineKeyboardButton("🎸 Assistant", url=f"https://t.me/{ASSUSERNAME}")
                 ],[
                     InlineKeyboardButton("🤖 Source Code", url="https://github.com/UnknownMortal/M8N-Music-Bot")
                 ],[
