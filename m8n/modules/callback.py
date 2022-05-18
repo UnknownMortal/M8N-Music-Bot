@@ -28,39 +28,20 @@ Use the given buttons for more 📍""",
 
 @Client.on_callback_query(filters.regex("cbcmnds"))
 async def cbcmnds(_, query: CallbackQuery):
-    await query.edit_message_text(
-        f"""**Music Bot Commands 💡**
-
-
-• /play (song name) 
-- For playing music
-
-• /pause 
-- For pausing music
-
-• /resume 
-- For resuming music
-
-• /skip 
-- For skipping current song
-
-• /search (song name) 
-- For searching music
-
-• /song or /resso 
-- For download music
-
-• /menu or /settings
-- For open menu settings
-
-• /telegraph 
-- For Telegraph link of given Media
-
-• /info
-- For to know about a user""",
+        await query.edit_message_text(
+        f"""✨ **Hello [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**
+» Check out the menu below to read the module information & see the list of available Commands !
+All commands can be used with (`! / .`) handler""",
         reply_markup=InlineKeyboardMarkup(
             [
-               [InlineKeyboardButton("🔙 Back", callback_data="cbhome")],
+                [
+                    InlineKeyboardButton("👩🏻‍💼 Users Commands", callback_data="user_command"),
+                ],[
+                    InlineKeyboardButton("Sudo Commands", callback_data="sudo_command"),
+                    InlineKeyboardButton("Owner Commands", callback_data="owner_command"),
+                ],[
+                    InlineKeyboardButton("🔙 Go Back", callback_data="home_start")
+                ],
             ]
         ),
-    )
+    ) 
