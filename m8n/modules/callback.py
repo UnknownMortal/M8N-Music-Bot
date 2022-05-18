@@ -144,7 +144,9 @@ async def cbcmnds(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbabout"))
 async def cbcmnds(_, query: CallbackQuery):
         await query.edit_message_text(
-        f""" """,
+        f"""Hello 👋 [{query.message.chat.first_name}](tg://user?id={query.message.chat.id})
+
+Click on the given inline buttons to know all the information about the Bot !!""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
