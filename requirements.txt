@@ -23,3 +23,4 @@ wget
 youtube-search-python
 youtube-search
 yt-dlp
+telegraph
