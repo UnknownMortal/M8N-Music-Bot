@@ -154,7 +154,15 @@ Click on the given inline buttons to know all the information about the Bot !!""
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbhome")
+                    InlineKeyboardButton("📨 Support", url=f"https://t.me/{ }"),
+                    InlineKeyboardButton("📨 Updates", url=f"https://t.me/{OWNER_USERNAME}")
+                ],[
+                    InlineKeyboardButton("👤 Owner", url=f"https://t.me/{GROUP_SUPPORT}"),
+                    InlineKeyboardButton("🎸 Assistant", url=f"https://t.me/{UPDATES_CHANNEL}")
+                ],[
+                    InlineKeyboardButton("🤖 Source Code", url=" ")
+                ],[
+                    InlineKeyboardButton("⬅️ Back", callback_data="cbhome")
                 ],
             ]
         ),
