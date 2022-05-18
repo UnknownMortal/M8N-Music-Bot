@@ -40,7 +40,7 @@ Use the given buttons for more 📍""",
 
 
 @Client.on_callback_query(filters.regex("cbcmds"))
-async def cbcmnds(_, query: CallbackQuery):
+async def cbcmds(_, query: CallbackQuery):
         await query.edit_message_text(
         f"""Hello 👋 [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) 
 
