@@ -59,6 +59,11 @@
             "required": true,
             "value": ""
         },
+        "START_PIC": {
+            "description": "Enter the telegraph link of an image or contact @M8N_SUPPORT",
+            "value": "",
+            "required": true
+        },
         "API_ID": {
             "description": "your Api ID from my.telegram.org/apps",
             "required": true,
