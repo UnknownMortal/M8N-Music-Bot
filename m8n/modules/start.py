@@ -8,6 +8,7 @@ from m8n.utils.filters import command
 
 from m8n.config import BOT_USERNAME
 from m8n.config import START_PIC
+from m8n.config import BOT_NAME
 
 
 
