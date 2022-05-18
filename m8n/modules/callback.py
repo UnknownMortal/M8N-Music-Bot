@@ -29,18 +29,18 @@ Use the given buttons for more 📍""",
 @Client.on_callback_query(filters.regex("cbcmnds"))
 async def cbcmnds(_, query: CallbackQuery):
         await query.edit_message_text(
-        f"""✨ **Hello [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**
-» Check out the menu below to read the module information & see the list of available Commands !
-All commands can be used with (`! / .`) handler""",
+        f"""Hello 👋 [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) 
+
+Check out all the commands given below by Click on the given inline buttons !!""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("👩🏻‍💼 Users Commands", callback_data="user_command"),
+                    InlineKeyboardButton(" ", callback_data=" "),
                 ],[
-                    InlineKeyboardButton("Sudo Commands", callback_data="sudo_command"),
-                    InlineKeyboardButton("Owner Commands", callback_data="owner_command"),
+                    InlineKeyboardButton(" ", callback_data=" "),
+                    InlineKeyboardButton(" ", callback_data=" "),
                 ],[
-                    InlineKeyboardButton("🔙 Go Back", callback_data="home_start")
+                    InlineKeyboardButton("🔙 Go Back", callback_data="cbhome")
                 ],
             ]
         ),
