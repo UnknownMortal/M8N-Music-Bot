@@ -1,3 +1,7 @@
+from m8n.config import BOT_USERNAME
+from m8n.config import START_PIC
+
+
 @Client.on_callback_query(filters.regex("cbhome"))
 async def cbhome(_, query: CallbackQuery):
     await query.edit_message_text(
