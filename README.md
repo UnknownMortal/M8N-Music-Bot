@@ -18,6 +18,8 @@
 - `/play <song name>` - Play song you requested
 - `/song <song name>` - Download songs you want
 - `/search <query>` - Search videos on youtube with details
+- `/tgm or /telegraph` - Generate TeleGraph link of given media
+- `/id or /whois` - to know about a user 
 - `@botusername <query>` - Get youtube url by inline
 
 #### Admins only
