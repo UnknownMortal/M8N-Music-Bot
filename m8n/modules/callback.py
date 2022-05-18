@@ -12,9 +12,9 @@ Use the given buttons for more 📍""",
             [
                 [
                     InlineKeyboardButton(
-                        "Commands", callback_data="cbcmnds"),
+                        "Source code", url=f"https://github.com/UnknownMortal/M8N-Music-Bot"),
                     InlineKeyboardButton(
-                        "About", callback_data="cbabout")
+                        "Commands", callback_data="cbcmnds")
                 ],
                 [
                     InlineKeyboardButton(
