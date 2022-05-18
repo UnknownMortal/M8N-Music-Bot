@@ -1,3 +1,6 @@
+from pyrogram import Client, filters
+from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
+
 from m8n.config import BOT_USERNAME
 from m8n.config import START_PIC
 from m8n.config import OWNER_ID
