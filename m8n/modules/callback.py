@@ -63,9 +63,10 @@ Check out all the commands given below by Click on the given inline buttons !!""
 # Commands for Everyone !!
 
 @Client.on_callback_query(filters.regex("cbevery"))
-async def cbcmnds(_, query: CallbackQuery):
-        await query.edit_message_text(
-        f"""• /play (song name) or (YT link)
+async def all_set(_, query: CallbackQuery):
+    await query.answer("Everyone menu")
+    await query.edit_message_text(
+    f"""• /play (song name) or (YT link)
 - plays the song in voice chat of your group 
 
 • /song (song name) or (YT link)
@@ -94,9 +95,10 @@ async def cbcmnds(_, query: CallbackQuery):
 # Commands for SudoUsers
 
 @Client.on_callback_query(filters.regex("cbsudo"))
-async def cbcmnds(_, query: CallbackQuery):
-        await query.edit_message_text(
-        f"""• /restart 
+async def sudo_set(_, query: CallbackQuery):
+    await query.answer("sudo menu")
+    await query.edit_message_text(
+    f"""• /restart 
 - restarts the bot in Heroku 
 
 • /gcast 
@@ -122,9 +124,10 @@ async def cbcmnds(_, query: CallbackQuery):
 # Commands for Group Admins
 
 @Client.on_callback_query(filters.regex("cbadmins"))
-async def cbcmnds(_, query: CallbackQuery):
-        await query.edit_message_text(
-        f"""• /skip 
+async def admin_set(_, query: CallbackQuery):
+    await query.answer("admins menu")
+    await query.edit_message_text(
+    f"""• /skip 
 - skips music in the voice Chat 
 
 • /pause 
@@ -156,9 +159,9 @@ async def cbcmnds(_, query: CallbackQuery):
 # Bot about & Information
 
 @Client.on_callback_query(filters.regex("cbabout"))
-async def cbcmnds(_, query: CallbackQuery):
-        await query.edit_message_text(
-        f"""Hello 👋 [{query.message.chat.first_name}](tg://user?id={query.message.chat.id})
+async def about_set(_, query: CallbackQuery):
+    await query.edit_message_text(
+    f"""Hello 👋 [{query.message.chat.first_name}](tg://user?id={query.message.chat.id})
 
 Click on the given inline buttons to know all the information about the Bot !!""",
         reply_markup=InlineKeyboardMarkup(
