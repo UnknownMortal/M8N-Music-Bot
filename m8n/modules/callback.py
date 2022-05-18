@@ -14,7 +14,7 @@ Use the given buttons for more 📍""",
                     InlineKeyboardButton(
                         "Source code", url=f"https://github.com/UnknownMortal/M8N-Music-Bot"),
                     InlineKeyboardButton(
-                        "Commands", callback_data="cbcmnds")
+                        "Commands", callback_data="cbcmds")
                 ],
                 [
                     InlineKeyboardButton(
@@ -26,7 +26,7 @@ Use the given buttons for more 📍""",
     )
 
 
-@Client.on_callback_query(filters.regex("cbcmnds"))
+@Client.on_callback_query(filters.regex("cbcmds"))
 async def cbcmnds(_, query: CallbackQuery):
         await query.edit_message_text(
         f"""Hello 👋 [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) 
@@ -37,7 +37,7 @@ Check out all the commands given below by Click on the given inline buttons !!""
                 [
                     InlineKeyboardButton("Sudo Users", callback_data=" "),
                 ],[
-                    InlineKeyboardButton("Everyone", callback_data=" "),
+                    InlineKeyboardButton("Everyone", callback_data="cbevery"),
                     InlineKeyboardButton("Group Admins", callback_data=" "),
                 ],[
                     InlineKeyboardButton("🔙 Go Back", callback_data="cbhome")
@@ -45,3 +45,48 @@ Check out all the commands given below by Click on the given inline buttons !!""
             ]
         ),
     ) 
+
+# Commands for Everyone !!
+
+@Client.on_callback_query(filters.regex("cbevery"))
+async def cbcmnds(_, query: CallbackQuery):
+        await query.edit_message_text(
+        f""" """,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")
+                ],
+            ]
+        ),
+    )
+
+# Commands for SudoUsers
+
+@Client.on_callback_query(filters.regex("cbevery"))
+async def cbcmnds(_, query: CallbackQuery):
+        await query.edit_message_text(
+        f""" """,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")
+                ],
+            ]
+        ),
+    )
+
+# Commands for Group Admins
+
+@Client.on_callback_query(filters.regex("cbevery"))
+async def cbcmnds(_, query: CallbackQuery):
+        await query.edit_message_text(
+        f""" """,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")
+                ],
+            ]
+        ),
+    )
