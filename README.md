@@ -40,7 +40,7 @@
 
 
 ### 🚨 Generate String Session
-       - '@M8N_SESSION_BOT by using this bot'
+      @M8N_SESSION_BOT by using this bot
 
 
 ### 🚀 Deploy To Heroku
