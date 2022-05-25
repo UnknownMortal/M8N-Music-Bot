@@ -14,6 +14,7 @@ from m8n.database.chats import blacklist_chat, blacklisted_chats, whitelist_chat
 from m8n.utils.decorators import sudo_users_only
 from m8n.utils.filters import command
 from m8n.modules import check_heroku
+from m8n.utils.decorators import errors
 
 
 @app.on_message(command(["rebootmusic", "restart"]) & filters.user(OWNER_ID))
