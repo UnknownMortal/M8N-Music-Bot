@@ -57,3 +57,18 @@
 ## License
 
 Distributed under the [GNU General Public License v3.0 License](https://github.com/UnknownMortal/M8N-Music-Bot/blob/main/LICENSE) See `LICENSE.md` for more information.
+
+## Credits
+
+</details>
+
+<details>
+<summary><b>🌟 Click here to see Credits </b></summary>
+<br>
+ 
+- CallsMusic 
+- PavanMagar
+- Pyrogram
+- Mortal
+- M8N
+- PyTgCalls
