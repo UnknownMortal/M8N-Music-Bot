@@ -8,6 +8,7 @@ from time import time
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
+from m8n import app, OWNER
 from m8n import app
 from m8n.config import OWNER_ID, BOT_NAME
 from m8n.database.chats import blacklist_chat, blacklisted_chats, whitelist_chat
