@@ -19,7 +19,8 @@
 - `/song <song name>` - Download songs you want
 - `/search <query>` - Search videos on youtube with details
 - `/tgm or /telegraph` - Generate TeleGraph link of given media
-- `/id or /whois` - to know about a user 
+- `/id or /whois` - to know about a user
+- `/ping` - Shows the Bot Ping Pong 
 - `@botusername <query>` - Get youtube url by inline
 
 #### Admins only
@@ -36,6 +37,7 @@
 - `/gcast <text/reply>` - Broadcast to groups (auto pinned)
 - `/broadcast <text>` - Broadcast to groups (without pinned)
 - `/exec <code>` - Excute a code
+- `/stats` - Shows the Bot's system stats
 - `/userbotleaveall` - remove assistant of all groups
 
 
