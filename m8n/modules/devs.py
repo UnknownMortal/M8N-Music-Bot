@@ -15,7 +15,7 @@ from m8n.utils.decorators import sudo_users_only
 from m8n.utils.filters import command
 from m8n.modules import check_heroku
 from m8n.utils.decorators import errors
-
+from m8n.database.functions import start_restart_stage
 
 @app.on_message(command(["rebootmusic", "restart"]) & filters.user(OWNER_ID))
 @check_heroku
