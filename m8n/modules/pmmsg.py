@@ -2,10 +2,10 @@
 # By : Pavan Magar
 
 from pyrogram import Client
-from Codexun.tgcalls import client as USER
+from m8n.tgcalls import client as USER
 from pyrogram import filters
 from pyrogram.types import Chat, Message, User
-from Codexun.config import (
+from m8n.config import (
     BOT_USERNAME,
 )
 
