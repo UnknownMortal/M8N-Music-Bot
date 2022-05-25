@@ -81,6 +81,9 @@ async def all_set(_, query: CallbackQuery):
 • /search or /yt
 - search link of the given song
 
+• /ping
+- Shows the ping message
+
 • @botusername <query> 
 - Get youtube url by inline mode""",
         reply_markup=InlineKeyboardMarkup(
@@ -109,6 +112,9 @@ async def sudo_set(_, query: CallbackQuery):
 
 • /exec <code> 
 - Execute any Code given by a sudo user of the bot
+
+• /stats
+- shows the Bot's system stats
 
 • /userbotleaveall
 - force the music assistant of the bot to leave all the served Chats""",
