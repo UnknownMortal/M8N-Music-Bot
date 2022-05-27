@@ -573,11 +573,9 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             caption="**[Get More Information ⚠️]({})**\n\nDuration : {}\nBot User : {}".format(
-                title,
                 url,
                 duration,
-                message.from_user.mention(),
-                position,
+                message.from_user.mention()
             ),
             reply_markup=keyboard,
         )
@@ -603,7 +601,7 @@ async def play(_, message: Message):
             photo="final.png",
             reply_markup=keyboard,
             caption="**[Get More Information ⚠️]({})**\n\nDuration : {}\nBot User : {}".format(
-                title, url, duration, message.from_user.mention(), message.chat.title
+                url, duration, message.from_user.mention()
             ),
         )
 
