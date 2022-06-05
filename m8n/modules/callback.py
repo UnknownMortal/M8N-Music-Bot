@@ -27,7 +27,7 @@ Use the given buttons for more 📍""",
                     InlineKeyboardButton(
                         "About", callback_data="cbabout"),
                     InlineKeyboardButton(
-                        "Commands", callback_data="cbcmds")
+                        "Commands", callback_data="cbevery")
                 ],
                 [
                     InlineKeyboardButton(
@@ -88,10 +88,13 @@ async def all_set(_, query: CallbackQuery):
 - Get youtube url by inline mode""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")
+              [
+                    InlineKeyboardButton(
+                        "Admins", callback_data="cbadmins"),
+                    InlineKeyboardButton(
+                        "Sudo/Owner", callback_data="cbsudo")
                 ],
-            ]
+              [InlineKeyboardButton("⬅️ Go Back", callback_data="cbhome")]]
         ),
     )
 
@@ -121,7 +124,7 @@ async def sudo_set(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")
+                    InlineKeyboardButton("🔙 Go Back", callback_data="cbevery")
                 ],
             ]
         ),
@@ -156,7 +159,7 @@ async def admin_set(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbcmds")
+                    InlineKeyboardButton("🔙 Go Back", callback_data="cbevery")
                 ],
             ]
         ),
