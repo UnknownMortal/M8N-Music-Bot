@@ -16,17 +16,17 @@
             "value": ""
         },
         "ASSID": {
-            "description": "fill with telegram id of account",
+            "description": "Fill with your music assistant's ID",
             "required": true,
             "value": ""
         },
         "ASSNAME": {
-            "description": "fill with telegram name of account",
+            "description": "Fill with your music Assistant's Name",
             "required": true,
             "value": ""
         },
         "ASSUSERNAME": {
-            "description": "fill with telegram username of account without @",
+            "description": "Fill with your Music Assistant's Username without @",
             "required": true,
             "value": ""
         },
@@ -67,11 +67,6 @@
         },
         "HEROKU_APP_NAME": {
             "description": "Add the Heroku app name here. It helps with restart bot.",
-            "required": true,
-            "value": ""
-        },
-        "BG_IMG": {
-            "description": "direct link for backgroud",
             "required": true,
             "value": ""
         },
