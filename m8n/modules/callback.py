@@ -60,8 +60,8 @@ Check out all the commands given below by Click on the given inline buttons !!""
         ),
     ) 
 
-# Commands for Everyone !!
 
+# Commands for Everyone !!
 @Client.on_callback_query(filters.regex("cbevery"))
 async def all_set(_, query: CallbackQuery):
     await query.answer("Everyone menu")
@@ -95,8 +95,8 @@ async def all_set(_, query: CallbackQuery):
         ),
     )
 
-# Commands for SudoUsers
 
+# Commands for SudoUsers
 @Client.on_callback_query(filters.regex("cbsudo"))
 async def sudo_set(_, query: CallbackQuery):
     await query.answer("sudo menu")
@@ -127,8 +127,8 @@ async def sudo_set(_, query: CallbackQuery):
         ),
     )
 
-# Commands for Group Admins
 
+# Commands for Group Admins
 @Client.on_callback_query(filters.regex("cbadmins"))
 async def admin_set(_, query: CallbackQuery):
     await query.answer("admins menu")
@@ -162,8 +162,8 @@ async def admin_set(_, query: CallbackQuery):
         ),
     )
 
-# Bot about & Information
 
+# Bot about & Information
 @Client.on_callback_query(filters.regex("cbabout"))
 async def about_set(_, query: CallbackQuery):
     await query.edit_message_text(
