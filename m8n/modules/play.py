@@ -224,7 +224,7 @@ async def play(_, message: Message):
     c = await app.get_chat_member(message.chat.id, BOT_ID)
     if c.status != "administrator":
         await lel.edit(
-            f"**Make me admin first !**"
+            f"**Promote me as administrator of your Group !!**"
         )
         return
     if not c.can_manage_voice_chats:
@@ -240,11 +240,6 @@ async def play(_, message: Message):
     if not c.can_invite_users:
         await lel.edit(
             "**Give me** `invite user` **admin permission.**"
-        )
-        return
-    if not c.can_restrict_members:
-        await lel.edit(
-            "**Give me** `ban user` **admin permission.**"
         )
         return
 
