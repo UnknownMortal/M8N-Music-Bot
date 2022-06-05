@@ -318,7 +318,7 @@ async def play(_, message: Message):
 
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)
-        file_path = await Codexun.tgcalls.convert(
+        file_path = await m8n.tgcalls.convert(
             (await message.reply_to_message.download(file_name))
             if not path.isfile(path.join("downloads", file_name))
             else file_name
@@ -439,11 +439,11 @@ async def play(_, message: Message):
 
         loop = asyncio.get_event_loop()
         x = await loop.run_in_executor(None, youtube.download, url, my_hook)
-        file_path = await Codexun.tgcalls.convert(x)
+        file_path = await m8n.tgcalls.convert(x)
     else:
         if len(message.command) < 2:
             return await lel.edit(
-                "**Don't be a crazy 🙅🏻 Give me a song name to play!\n\nExample \n/play hamanwa mere**"
+                "**Don't be a crazy 🙅🏻 Give me a song name to play!\n\nExample \n/play 295**"
             )
         await lel.edit("**🔍 | Finding...**")
         query = message.text.split(None, 1)[1]
@@ -562,7 +562,7 @@ async def play(_, message: Message):
 
         loop = asyncio.get_event_loop()
         x = await loop.run_in_executor(None, youtube.download, url, my_hook)
-        file_path = await Codexun.tgcalls.convert(x)
+        file_path = await m8n.tgcalls.convert(x)
 
     if await is_active_chat(message.chat.id):
         position = await queues.put(message.chat.id, file=file_path)
