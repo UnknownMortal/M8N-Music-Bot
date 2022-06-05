@@ -63,7 +63,7 @@ from m8n.config import (
     ASSNAME,
     ASSUSERNAME,
     ASSID,
-    START_IMG,
+    START_PIC,
     SUPPORT,
     UPDATE,
     BOT_NAME,
