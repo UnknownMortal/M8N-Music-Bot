@@ -29,11 +29,11 @@ Use the given buttons for more 📍""",
                     InlineKeyboardButton(
                         "About", callback_data="cbabout"),
                     InlineKeyboardButton(
-                        "Commands", callback_data="cbcmds")
+                        "Commands", callback_data="cbevery")
                 ],
                 [
                     InlineKeyboardButton(
-                        "✚ Add Bot in Your Group ✚", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "✚ Click here to Summon Me", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ]
            ]
         ),
