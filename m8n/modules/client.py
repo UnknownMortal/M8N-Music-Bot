@@ -11,6 +11,9 @@ import yt_dlp
 import aiohttp
 import random
 
+from pyrogram import Client, filters
+from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
+
 from os import path
 from typing import Union
 from asyncio import QueueEmpty
