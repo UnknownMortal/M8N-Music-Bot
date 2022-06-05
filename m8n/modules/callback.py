@@ -23,9 +23,9 @@ Use inline buttons given below to know more about me !!""",
             [
                 [
                     InlineKeyboardButton(
-                        "About", callback_data="cbabout"),
+                        "🏳‍🌈 About", callback_data="cbabout"),
                     InlineKeyboardButton(
-                        "Commands", callback_data="cbevery")
+                        "🗂 Commands", callback_data="cbevery")
                 ],
                 [
                     InlineKeyboardButton(
