@@ -233,7 +233,7 @@ async def play(_, message: Message):
     c = await app.get_chat_member(message.chat.id, BOT_ID)
     if c.status != "administrator":
         await lel.edit(
-            f"I need to be admin with some permissions:\n\n❌ **can_manage_voice_chats:** To manage voice chats\n❌ **can_delete_messages:** To delete music's searched waste\n❌ **can_invite_users**: For inviting assistant to chat\n❌ **can_restrict_members**: For protecting music from spammers."
+            f"I need to be admin with some permissions:\n\n❌ **can_manage_voice_chats:** To manage voice chats\n❌ **can_delete_messages:** To delete music's searched waste\n❌ **can_invite_users**: For inviting assistant to chat"
         )
         return
     if not c.can_manage_voice_chats:
@@ -252,12 +252,6 @@ async def play(_, message: Message):
         await lel.edit(
             "I don't have the required permission to perform this action."
             + "\n❌ **Permission:** Invite User Via Invitelink"
-        )
-        return
-    if not c.can_restrict_members:
-        await lel.edit(
-            "I don't have the required permission to perform this action."
-            + "\n❌ **Permission:** Ban User"
         )
         return
 
