@@ -8,11 +8,14 @@ import subprocess
 import requests
 import aiohttp
 import yt_dlp
+import aiohttp
+import random
 
 from os import path
 from typing import Union
 from asyncio import QueueEmpty
-from PIL import Image, ImageFont, ImageDraw
+from PIL import Image, ImageFont, ImageDraw, ImageFilter
+from PIL import ImageGrab
 from typing import Callable
 
 from pytgcalls import StreamType
@@ -30,8 +33,14 @@ from pyrogram.types import (
     CallbackQuery,
 )
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
+from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
 
+
+from m8n import BOT_NAME, BOT_USERNAME
 from m8n.tgcalls import calls, queues
+from m8n.tgcalls.youtube import download
+from m8n.tgcalls import convert as cconvert
 from m8n.tgcalls.calls import client as ASS_ACC
 from m8n.database.queue import (
     get_active_chats,
@@ -55,6 +64,8 @@ from m8n.config import (
     ASSID,
     SUPPORT,
     UPDATE,
+    BOT_NAME,
+    START_IMG,
     BOT_USERNAME,
 )
 from m8n.utils.filters import command
@@ -94,13 +105,28 @@ def time_to_seconds(time):
     return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
+def truncate(text):
+    list = text.split(" ")
+    text1 = ""
+    text2 = ""    
+    for i in list:
+        if len(text1) + len(i) < 27:        
+            text1 += " " + i
+        elif len(text2) + len(i) < 25:        
+            text2 += " " + i
+
+    text1 = text1.strip()
+    text2 = text2.strip()     
+    return [text1,text2]
+
 # Change image size
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
     heightRatio = maxHeight / image.size[1]
     newWidth = int(widthRatio * image.size[0])
     newHeight = int(heightRatio * image.size[1])
-    return image.resize((newWidth, newHeight))
+    newImage = image.resize((newWidth, newHeight))
+    return newImage
 
 
 async def generate_cover(requested_by, title, views, duration, thumbnail):
@@ -111,95 +137,60 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
                 await f.write(await resp.read())
                 await f.close()
 
-    image1 = Image.open("./background.png")
-    image2 = Image.open("etc/foreground.png")
-    image3 = changeImageSize(1280, 720, image1)
-    image4 = changeImageSize(1280, 720, image2)
-    image5 = image3.convert("RGBA")
-    image6 = image4.convert("RGBA")
-    Image.alpha_composite(image5, image6).save("temp.png")
-    img = Image.open("temp.png")
-    draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("etc/font.otf", 32)
-    draw.text((190, 550), f"Title: {title}", (255, 255, 255), font=font)
-    draw.text((190, 590), f"Duration: {duration}", (255, 255, 255), font=font)
-    draw.text((190, 630), f"Views: {views}", (255, 255, 255), font=font)
-    draw.text(
-        (190, 670),
-        f"Added By: {requested_by}",
-        (255, 255, 255),
-        font=font,
-    )
-    img.save("final.png")
-    os.remove("temp.png")
-    os.remove("background.png")
+    image = Image.open(f"./background.png")
+    black = Image.open("etc/black.jpg")
+    img = Image.open("etc/ThumbSq.png")
+    image5 = changeImageSize(1280, 720, img)
+    image1 = changeImageSize(1280, 720, image)
+    image1 = image1.filter(ImageFilter.BoxBlur(10))
+    image11 = changeImageSize(1280, 720, image)
+    image1 = image11.filter(ImageFilter.BoxBlur(10))
+    image2 = Image.blend(image1,black,0.6)
 
+    # Cropping circle from thubnail
+    image3 = image11.crop((280,0,1000,720))
+    #lum_img = Image.new('L', [720,720] , 0)
+   # draw = ImageDraw.Draw(lum_img)
+   # draw.pieslice([(0,0), (720,720)], 0, 360, fill = 255, outline = "white")
+   # img_arr =np.array(image3)
+    #lum_img_arr =np.array(lum_img)
+    #final_img_arr = np.dstack((img_arr,lum_img_arr))
+    #image3 = Image.fromarray(final_img_arr)
+    image3 = image3.resize((500,500))
+    
 
-@Client.on_message(
-    command(["musicplayer", f"musicplayer@{BOT_USERNAME}"])
-    & ~filters.edited
-    & ~filters.bot
-    & ~filters.private
-)
-async def hfmm(_, message):
-    global DISABLED_GROUPS
-    if message.sender_chat:
-        return await message.reply_text(
-            "🔴 __You're an **Anonymous Admin**!__\n│\n╰ Revert back to user account from admin rights."
-        )
-    permission = "can_delete_messages"
-    m = await adminsOnly(permission, message)
-    if m == 1:
-        return
-    try:
-        user_id = message.from_user.id
-    except:
-        return
-    if len(message.command) != 2:
-        await message.reply_text("I only know `/musicplayer on` and `/musicplayer off`")
-        return
-    status = message.text.split(None, 1)[1]
-    message.chat.id
-    if status in ["ON", "on", "On"]:
-        lel = await message.reply("`Processing...`")
-        if message.chat.id not in DISABLED_GROUPS:
-            await lel.edit(
-                f"🔴 __Music player already activate in **{message.chat.title}**__"
-            )
-            return
-        DISABLED_GROUPS.remove(message.chat.id)
-        await lel.edit(
-            f"✅ __Music player has been turn on successfully in **{message.chat.title}**__"
-        )
+    image2.paste(image3, (100,115))
+    image2.paste(image5, mask = image5)
 
-    elif status in ["OFF", "off", "Off"]:
-        lel = await message.reply("__`Processing...`__")
+    # fonts
+    font1 = ImageFont.truetype(r'etc/M8N.otf', 30)
+    font2 = ImageFont.truetype(r'etc/M8N.otf', 60)
+    font3 = ImageFont.truetype(r'etc/M8N.otf', 49)
+    font4 = ImageFont.truetype(r'etc/Mukta-ExtraBold.ttf', 35)
 
-        if message.chat.id in DISABLED_GROUPS:
-            await lel.edit(
-                f"🔴 __Music player already not active in **{message.chat.title}**__"
-            )
-            return
-        DISABLED_GROUPS.append(message.chat.id)
-        await lel.edit(
-            f"✅ __Music player has been turn off successfully **{message.chat.title}**__"
-        )
-    else:
-        await message.reply_text("I only know `/musicplayer on` and `/musicplayer off`")
+    image4 = ImageDraw.Draw(image2)
 
+    # title
+    title1 = truncate(title)
+    image4.text((670, 280), text=title1[0], fill="white", font = font3, align ="left") 
+    image4.text((670, 332), text=title1[1], fill="white", font = font3, align ="left") 
 
-@Client.on_callback_query(filters.regex(pattern=r"^(cls)$"))
-async def closed(_, query: CallbackQuery):
-    from_user = query.from_user
-    permissions = await member_permissions(query.message.chat.id, from_user.id)
-    permission = "can_restrict_members"
-    if permission not in permissions:
-        return await query.answer(
-            "You don't have enough permissions to perform this action.\n"
-            + f"❌ Permission: {permission}",
-            show_alert=True,
-        )
-    await query.message.delete()
+    # description
+    views = f"Views : {views}"
+    duration = f"Duration : {duration} minutes"
+    channel = f"Request : {BOT_NAME} Bot"
+
+    image4.text((670, 410), text=views, fill="white", font = font4, align ="left") 
+    image4.text((670, 460), text=duration, fill="white", font = font4, align ="left") 
+    image4.text((670, 510), text=channel, fill="white", font = font4, align ="left")
+
+    
+    image2.save(f"final.png")
+    os.remove(f"background.png")
+    final = f"temp.png"
+    return final
+     
+
 
 
 # play
@@ -216,40 +207,39 @@ async def play(_, message: Message):
     user_id = message.from_user.id
     if message.sender_chat:
         return await message.reply_text(
-            "🔴 __You're an **Anonymous Admin**!__\n│\n╰ Revert back to user account from admin rights."
+            " __You're an **Anonymous Admin**!__\n│\n╰ Revert back to user account from admin rights."
         )
 
     if message.chat.id in DISABLED_GROUPS:
         await message.reply(
-            "🔴 __**Music player is turned off, ask the admin to turn on it on!**__"
+            " __**Music player is turned off, ask the admin to turn on it on!**__"
         )
+      
+
         return
-    lel = await message.reply("🔄 **Processing...**")
+    lel = await message.reply("**🔄 | Processing...**")
 
     chid = message.chat.id
 
     c = await app.get_chat_member(message.chat.id, BOT_ID)
     if c.status != "administrator":
         await lel.edit(
-            f"I need to be admin with some permissions:\n\n❌ **can_manage_voice_chats:** To manage voice chats\n❌ **can_delete_messages:** To delete music's searched waste\n❌ **can_invite_users**: For inviting assistant to chat"
+            f"**Promote me as a administrator of your Group !!**"
         )
         return
     if not c.can_manage_voice_chats:
         await lel.edit(
-            "I don't have the required permission to perform this action."
-            + "\n❌ **Permission:** Manage Voice Chats"
+            "**Give me** `manage voice chat` **admin permission.**"
         )
         return
     if not c.can_delete_messages:
         await lel.edit(
-            "I don't have the required permission to perform this action."
-            + "\n❌ **Permission:** Delete Message"
+            "**Give me** `Delete massages` **admin permission.**"
         )
         return
     if not c.can_invite_users:
         await lel.edit(
-            "I don't have the required permission to perform this action."
-            + "\n❌ **Permission:** Invite User Via Invitelink"
+            "**Give me** `invite user` **admin permission.**"
         )
         return
 
@@ -265,12 +255,12 @@ async def play(_, message: Message):
             try:
                 await ASS_ACC.join_chat(f"{message.chat.username}")
                 await message.reply(
-                    f"✅ **{ASSNAME} joined successfully**",
+                    f"**@{ASSUSERNAME} joined !**",
                 )
                 await remove_active_chat(chat_id)
             except Exception as e:
                 await message.reply_text(
-                    f"❌ __**Assistant failed to join**__\n\n**Reason**:{e}"
+                    f"**@{ASSUSERNAME} failed to join** Add @{ASSUSERNAME} manually in your group.\n\n**Reason**:{e}"
                 )
                 return
         else:
@@ -281,14 +271,14 @@ async def play(_, message: Message):
                     link_bokep = f"https://t.me/joinchat/{kontol}"
                 await ASS_ACC.join_chat(link_bokep)
                 await message.reply(
-                    f"✅ **{ASSNAME} joined successfully**",
+                    f"**@{ASSUSERNAME} joined successfully**",
                 )
                 await remove_active_chat(message.chat.id)
             except UserAlreadyParticipant:
                 pass
             except Exception as e:
                 return await message.reply_text(
-                    f"❌ __**Assistant failed to join**__\n\n**Reason**:{e}"
+                    f"**@{ASSUSERNAME} failed to join** Add @{ASSUSERNAME} manually in your group.\n\n**Reason**:{e}"
                 )
 
     await message.delete()
@@ -302,29 +292,33 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"💡 Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
 
         file_name = get_file_name(audio)
         url = f"https://t.me/{UPDATE}"
         title = audio.title
-        thumb_name = "https://telegra.ph//file/461807815346e07838083.jpg"
+        thumb_name = "https://telegra.ph/file/a7adee6cf365d74734c5d.png"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
 
         keyboard = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("📨 Support", url=f"t.me/{SUPPORT}"),
-                    InlineKeyboardButton("📨 Updates", url=f"t.me/{UPDATE}"),
-                ],
-            ]
-        )
+    [
+        
+       [
+            InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
+            InlineKeyboardButton("About 👨🏻‍💻", callback_data="nonabout"),
+        ],[
+            InlineKeyboardButton("🚫 Close", callback_data="cls"),
+        ],
+        
+    ]
+)
 
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)
-        file_path = await m8n.tgcalls.convert(
+        file_path = await Codexun.tgcalls.convert(
             (await message.reply_to_message.download(file_name))
             if not path.isfile(path.join("downloads", file_name))
             else file_name
@@ -351,17 +345,21 @@ async def play(_, message: Message):
                 secmul *= 60
 
             keyboard = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("📨 Support", url=f"t.me/{SUPPORT}"),
-                        InlineKeyboardButton("📨 Updates", url=f"t.me/{UPDATE}"),
-                    ],
-                ]
-            )
+    [
+        
+       [
+            InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
+            InlineKeyboardButton("About 👨🏻‍💻", callback_data="nonabout"),
+        ],[
+            InlineKeyboardButton("🚫 Close", callback_data="cls"),
+        ],
+        
+    ]
+)
 
         except Exception as e:
             title = "NaN"
-            thumb_name = "https://telegra.ph//file/461807815346e07838083.jpg"
+            thumb_name = "https://telegra.ph/file/a7adee6cf365d74734c5d.png"
             duration = "NaN"
             views = "NaN"
             keyboard = InlineKeyboardMarkup(
@@ -370,7 +368,7 @@ async def play(_, message: Message):
 
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"💡 Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
             return
         requested_by = message.from_user.first_name
@@ -441,16 +439,16 @@ async def play(_, message: Message):
 
         loop = asyncio.get_event_loop()
         x = await loop.run_in_executor(None, youtube.download, url, my_hook)
-        file_path = await m8n.tgcalls.convert(x)
+        file_path = await Codexun.tgcalls.convert(x)
     else:
         if len(message.command) < 2:
             return await lel.edit(
-                "❌ **Song not found !! Try searching with the correct title**"
+                "**Don't be a crazy 🙅🏻 Give me a song name to play!\n\nExample \n/play hamanwa mere**"
             )
-        await lel.edit("🔎 **Finding the song...**")
+        await lel.edit("**🔍 | Finding...**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("**Joining Voice Chat !!**")
+        await lel.edit("**⏳ | Downloading...**")
         try:
             results = YoutubeSearch(query, max_results=5).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -473,23 +471,27 @@ async def play(_, message: Message):
 
         except Exception as e:
             await lel.edit(
-                "❌ Song not found.\n\nTry another keyword or `/play [yt url]`."
+                "• **Song not found**\n\nwrite name correctly."
             )
             print(str(e))
             return
 
         keyboard = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("📨 Support", url=f"t.me/{SUPPORT}"),
-                    InlineKeyboardButton("📨 Updates", url=f"t.me/{UPDATE}"),
-                ],
-            ]
-        )
+    [
+        
+       [
+            InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
+            InlineKeyboardButton("About 👨🏻‍💻", callback_data="nonabout"),
+        ],[
+            InlineKeyboardButton("🚫 Close", callback_data="cls"),
+        ],
+        
+    ]
+)
 
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"💡 Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
             return
         requested_by = message.from_user.first_name
@@ -513,7 +515,7 @@ async def play(_, message: Message):
                     try:
                         if eta > 2:
                             lel.edit(
-                                f"Downloading {title[:50]}\n\n**FileSize:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec"
+                                f"**Downloading given song**"
                             )
                     except Exception as e:
                         pass
@@ -522,7 +524,7 @@ async def play(_, message: Message):
                         flex[str(bytesx)] += 1
                         if eta > 2:
                             lel.edit(
-                                f"**Downloading** {title[:50]}..\n\n**FileSize:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec"
+                                f"**Downloading given song..**"
                             )
                         print(
                             f"[{url_suffix}] Downloaded {percentage} at a speed of {speed} | ETA: {eta} seconds"
@@ -532,7 +534,7 @@ async def play(_, message: Message):
                         flex[str(bytesx)] += 1
                         if eta > 2:
                             lel.edit(
-                                f"**Downloading** {title[:50]}...\n\n**FileSize:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec"
+                                f"**Downloading given song..**"
                             )
                         print(
                             f"[{url_suffix}] Downloaded {percentage} at a speed of {speed} | ETA: {eta} seconds"
@@ -542,7 +544,7 @@ async def play(_, message: Message):
                         flex[str(bytesx)] += 1
                         if eta > 2:
                             lel.edit(
-                                f"**Downloading** {title[:50]}....\n\n**FileSize:** {size}\n**Downloaded:** {percentage}\n**Speed:** {speed}\n**ETA:** {eta} sec"
+                                f"**Downloding give song..**"
                             )
                         print(
                             f"[{url_suffix}] Downloaded {percentage} at a speed of {speed} | ETA: {eta} seconds"
@@ -554,24 +556,22 @@ async def play(_, message: Message):
                     taken = "00:00"
                 size = d["_total_bytes_str"]
                 lel.edit(
-                    f"**Downloaded** {title[:50]}.....\n\n**FileSize:** {size}\n**Time Taken:** {taken} sec\n\n**Converting File**[__FFmpeg processing__]"
+                    f"**Downloaded Successfully**\n\n**{title[:50]}...\n\n**FileSize: {size}**\n■■■■■■■■■■ `100%`\n**Time Taken: {taken} sec**\n\n<b>__FFmpeg processing...__</b>"
                 )
                 print(f"[{url_suffix}] Downloaded| Elapsed: {taken} seconds")
 
         loop = asyncio.get_event_loop()
         x = await loop.run_in_executor(None, youtube.download, url, my_hook)
-        file_path = await m8n.tgcalls.convert(x)
+        file_path = await Codexun.tgcalls.convert(x)
 
     if await is_active_chat(message.chat.id):
         position = await queues.put(message.chat.id, file=file_path)
         await message.reply_photo(
             photo="final.png",
-            caption="**[Get More Information ⚠️]({})**\n\nDuration : {}\nBot User : {}".format(
-                url,
-                duration,
-                message.from_user.mention()
-            ),
             reply_markup=keyboard,
+            caption="**[Get Additional Information ⚠️]({})**\n\n**⑆ User :** **{}**\n**⑆ Group : [{}](https://t.me/M8N_OFFICIAL)**".format(
+                url, message.from_user.mention(), message.chat.title
+            ),
         )
     else:
         try:
@@ -586,16 +586,17 @@ async def play(_, message: Message):
             )
         except Exception:
             return await lel.edit(
-                "Error Joining Voice Chat. Make sure Voice Chat is Enabled."
+                "Error Joining Voice Chat. Make sure Voice Chat is Enabled.\n\n If YES, then make sure Music Bots Assistant is not banned in your group or available in your group!"
             )
+
 
         await music_on(message.chat.id)
         await add_active_chat(message.chat.id)
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="**[Get More Information ⚠️]({})**\n\nDuration : {}\nBot User : {}".format(
-                url, duration, message.from_user.mention()
+            caption="**[Get Additional Information ⚠️]({})**\n\n**⑆ User :** **{}**\n**⑆ Group : [{}](https://t.me/M8N_OFFICIAL)**".format(
+                url, message.from_user.mention(), message.chat.title
             ),
         )
 
