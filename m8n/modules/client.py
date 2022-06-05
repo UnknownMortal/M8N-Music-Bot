@@ -135,7 +135,6 @@ Powered by **@{UPDATE}** !!""",
 
 @Client.on_callback_query(filters.regex("newadmins"))
 async newadmins(_, query: CallbackQuery):
-    await query.answer("admins menu")
     await query.edit_message_text(
     f"""• /skip 
 - skips music in the voice Chat 
