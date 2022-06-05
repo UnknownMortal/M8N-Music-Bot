@@ -224,7 +224,7 @@ async def play(_, message: Message):
     c = await app.get_chat_member(message.chat.id, BOT_ID)
     if c.status != "administrator":
         await lel.edit(
-            f"**Promote me as a administrator of your Group !!**"
+            f"**Make me admin first !**"
         )
         return
     if not c.can_manage_voice_chats:
@@ -240,6 +240,11 @@ async def play(_, message: Message):
     if not c.can_invite_users:
         await lel.edit(
             "**Give me** `invite user` **admin permission.**"
+        )
+        return
+    if not c.can_restrict_members:
+        await lel.edit(
+            "**Give me** `ban user` **admin permission.**"
         )
         return
 
@@ -310,7 +315,7 @@ async def play(_, message: Message):
             InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
             InlineKeyboardButton("About 👨🏻‍💻", callback_data="nonabout"),
         ],[
-            InlineKeyboardButton("🚫 Close", callback_data="cls"),
+            InlineKeyboardButton("Close 🗑️", callback_data="cls"),
         ],
         
     ]
@@ -351,7 +356,7 @@ async def play(_, message: Message):
             InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
             InlineKeyboardButton("About 👨🏻‍💻", callback_data="nonabout"),
         ],[
-            InlineKeyboardButton("🚫 Close", callback_data="cls"),
+            InlineKeyboardButton("Close 🗑️", callback_data="cls"),
         ],
         
     ]
@@ -443,7 +448,7 @@ async def play(_, message: Message):
     else:
         if len(message.command) < 2:
             return await lel.edit(
-                "**Don't be a crazy 🙅🏻 Give me a song name to play!\n\nExample \n/play 295**"
+                "**Don't be a crazy 🙅🏻 Give me a song name to play!\n\nExample \n/play hamanwa mere**"
             )
         await lel.edit("**🔍 | Finding...**")
         query = message.text.split(None, 1)[1]
@@ -483,7 +488,7 @@ async def play(_, message: Message):
             InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
             InlineKeyboardButton("About 👨🏻‍💻", callback_data="nonabout"),
         ],[
-            InlineKeyboardButton("🚫 Close", callback_data="cls"),
+            InlineKeyboardButton("Close 🗑️", callback_data="cls"),
         ],
         
     ]
@@ -569,7 +574,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="**[Get Additional Information ⚠️]({})**\n\n**⑆ User :** **{}**\n**⑆ Group : [{}](https://t.me/M8N_OFFICIAL)**".format(
+            caption="**[Get Additional Information 💡]({})**\n\n**⑆ User :** **{}**\n**⑆ Group : [{}..](https://t.me/codexun)**".format(
                 url, message.from_user.mention(), message.chat.title
             ),
         )
@@ -595,7 +600,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="**[Get Additional Information ⚠️]({})**\n\n**⑆ User :** **{}**\n**⑆ Group : [{}](https://t.me/M8N_OFFICIAL)**".format(
+            caption="**[Get Additional Information 💡]({})**\n\n**⑆ User :** **{}**\n**⑆ Group : [{}..](https://t.me/codexun)**".format(
                 url, message.from_user.mention(), message.chat.title
             ),
         )
