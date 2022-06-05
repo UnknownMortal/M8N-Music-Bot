@@ -318,8 +318,8 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🚨 Support", url=f"t.me/{SUPPORT}"),
-                    InlineKeyboardButton("📡 Updates", url=f"t.me/{UPDATE}"),
+                    InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
+                    InlineKeyboardButton("⚡ Speed", callback_data="speed"),
                 ],
                 [InlineKeyboardButton(text="🗑 Close Pannel", callback_data="cls")],
             ]
@@ -356,8 +356,8 @@ async def play(_, message: Message):
             keyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🚨 Support", url=f"t.me/{SUPPORT}"),
-                        InlineKeyboardButton("📡 Updates", url=f"t.me/{UPDATE}"),
+                        InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
+                        InlineKeyboardButton("⚡ Speed", callback_data="speed"),
                     ],
                     [InlineKeyboardButton(text="🗑 Close Pannel", callback_data="cls")],
                 ]
@@ -485,8 +485,8 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🚨 Support", url=f"t.me/{SUPPORT}"),
-                    InlineKeyboardButton("📡 Updates", url=f"t.me/{UPDATE}"),
+                    InlineKeyboardButton("⚙️ Manage", callback_data="cbmenu"),
+                    InlineKeyboardButton("⚡ Speed", callback_data="speed"),
                 ],
                 [InlineKeyboardButton(text="🗑 Close Pannel", callback_data="cls")],
             ]
