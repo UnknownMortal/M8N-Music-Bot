@@ -449,12 +449,12 @@ async def play(_, message: Message):
     else:
         if len(message.command) < 2:
             return await lel.edit(
-                "🧐 **Song not found! Try searching with the correct title\nExample » /play In The End\n\nChannel : @UserLazyXBot**"
+                "❌ **Song not found! Try searching with the correct title\nExample » /play 295**"
             )
         await lel.edit("🔎 **Finding the song...**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("🎵 **Processing sounds...**")
+        await lel.edit("🌟 **Processing sounds...**")
         try:
             results = YoutubeSearch(query, max_results=5).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -571,7 +571,7 @@ async def play(_, message: Message):
         position = await queues.put(message.chat.id, file=file_path)
         await message.reply_photo(
             photo="final.png",
-            caption="**[Get Additional Information ⚠️]({})**\n**👤 Bot User : {}**\n**📀 Track : {}**".format(
+            caption="**[Get Additional Information ⚠️]({})**\n\n**👤 Bot User : {}**\n**📀 Track : {}**".format(
                 url,
                 message.from_user.mention(),
                 position,
@@ -599,7 +599,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="**[Get Additional Information ⚠️]({})\n**👤 Bot User : {}**\n🌐 Group : {}**".format(
+            caption="**[Get Additional Information ⚠️]({})\n\n**👤 Bot User : {}**\n🌐 Group : {}**".format(
                 url, message.from_user.mention(), message.chat.title
             ),
         )
