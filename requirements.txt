@@ -6,7 +6,7 @@ dnspython
 ffmpeg-python
 future
 gitpython
-pyrogram==1.4.16
+pyrogram==1.4.12
 hurry.filesize
 heroku3
 motor
@@ -14,7 +14,7 @@ pillow
 psutil
 python-dotenv
 pyromod
-py-tgcalls==0.8.2
+py-tgcalls==0.8.6
 requests
 search-engine-parser
 tgcrypto
@@ -24,3 +24,5 @@ youtube-search-python
 youtube-search
 yt-dlp
 telegraph
+regex
+html5lib
