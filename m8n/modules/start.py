@@ -42,11 +42,11 @@ Use inline buttons given below to know more about me !!""",
     )
 
 
-@Client.on_message(command(["start"]) & filters.group & ~filters.edited)
-async def help(client: Client, message: Message):
+@Client.on_message(command(["start, f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+async def gcstart(client: Client, message: Message):
     await message.reply_photo(
         photo=f"{START_PIC}",
-        caption=f"""Thanks for adding me in your group !! If you want to use me with right actions promote me as admin in this Chat.""",
+        caption=f"Thanks for adding me in your group !! If you want to use me with right actions promote me as admin in this Chat.",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
