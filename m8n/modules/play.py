@@ -65,7 +65,7 @@ from m8n.config import (
     SUPPORT,
     UPDATE,
     BOT_NAME,
-    START_IMG,
+    START_PIC,
     BOT_USERNAME,
 )
 from m8n.utils.filters import command
