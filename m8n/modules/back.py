@@ -673,6 +673,6 @@ async def dbconfirm(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("speed"))
 async def speed(_, query: CallbackQuery):
     await query.answer(
-            "**⚡ SPEED OF THE SERVER :**\n• 4.4568 ms\n• 1264.0 ms\n• 98.20 ms\n• 00.01 ms",
+            "🌟 SPEED OF THE SERVER :\n• 4.4568 ms\n• 1264.0 ms\n• 98.20 ms\n• 00.01 ms",
             show_alert=True,
         )
