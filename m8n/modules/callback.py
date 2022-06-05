@@ -187,3 +187,60 @@ Click on the given inline buttons to know all the information about the Bot !!""
             ]
         ),
     )
+
+
+# OTHERS CALLBACK
+@Client.on_callback_query(filters.regex("others"))
+async def others(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""Powered By : @{UPDATE}
+
+After you played your song some menu buttons will be comes to manage your music playing on voice chat. All the buttons are as follows :
+
+• ⏸ 
+- Resume Music
+• ▶️
+- Pause Music
+• ⏹ 
+- End Music
+• ⏩
+- Skip Music
+
+Only admins can use this buttons📍""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+              [
+                    InlineKeyboardButton("Support 🚶", url=f"https://t.me/{SUPPORT}"),
+                    InlineKeyboardButton("Updates 🤖", url=f"https://t.me/{UPDATE}")
+                ],
+            [InlineKeyboardButton("Basic Guide & Full Set-up", callback_data="setup")],
+            [InlineKeyboardButton("🔙  Back Home", callback_data="cbhome")]]
+        ),
+    )
+
+@Client.on_callback_query(filters.regex("setup"))
+async def setup(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""**Basic SetUp Guide for the Bot Usage :**
+
+
+• Add this Bot in your Group.
+
+• Promote it as an administrator with needed powers.
+
+• Now send /play or /userbotjoin command to invite assistant id in your Chat.
+
+• Your All the Set-Up is Done, Now enjoy your favourite music in your groups voice chat without any limitations.
+
+
+Thanks !!
+Please don't forget to Join our Group :
+@{UPDATE}""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🔙 Go Back", callback_data="others")
+                ],
+            ]
+        ),
+    )
