@@ -31,6 +31,10 @@ Use inline buttons given below to know more about me !!""",
                 ],
                 [
                     InlineKeyboardButton(
+                        "☁️ Others", callback_data="others")
+                ],
+                [
+                    InlineKeyboardButton(
                         "✚ Click here to Summon Me", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ]
            ]
