@@ -16,13 +16,11 @@ from m8n.config import BOT_NAME
 async def start_(client: Client, message: Message):
     await message.reply_photo(
         photo=f"{START_PIC}",
-        caption=f"""**Welcome 👋 {message.from_user.mention()}**
+        caption=f"""Hello 👋 My name is [{BOT_NAME}]({https://t.me/{BOT_USERNAME})
 
-This is the {BOT_NAME}, a bot for playing high quality and unbreakable music in your groups voice chat.
+I'm most complete voice chat music player for playing high quality and unbreakable music in your groups voice chat with some useful features.
 
-Just add me to your group and make a admin with needed admin permission to perform a right actions !!
-
-Use the given buttons for more 📍""",
+Use inline buttons given below to know more about me !!""",
     reply_markup=InlineKeyboardMarkup(
             [
                 [
