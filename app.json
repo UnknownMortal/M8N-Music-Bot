@@ -65,16 +65,6 @@
             "required": true,
             "value": ""
         },
-        "HEROKU_API_KEY": {
-            "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
-            "required": true,
-            "value": ""
-        },
-        "HEROKU_APP_NAME": {
-            "description": "Add the Heroku app name here. It helps with restart bot.",
-            "required": true,
-            "value": ""
-        },
         "START_PIC": {
             "description": "Enter the telegraph link of an image or contact @M8N_SUPPORT",
             "value": "https://telegra.ph/file/e3bbcfcf96e85553aff4a.jpg",
