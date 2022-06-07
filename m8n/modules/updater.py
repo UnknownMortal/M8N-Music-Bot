@@ -8,9 +8,16 @@ from git.exc import InvalidGitRepositoryError
 from pyrogram.types import Message
 from pyrogram import Client, filters
 
-from program import LOGS
 from m8n.config import UPSTREAM_REPO, BOT_USERNAME
-
+from m8n import app, OWNER
+from m8n import app
+from m8n.config import OWNER_ID, BOT_NAME
+from m8n.database.chats import blacklist_chat, blacklisted_chats, whitelist_chat
+from m8n.utils.decorators import sudo_users_only
+from m8n.utils.filters import command
+from m8n.modules import check_heroku
+from m8n.utils.decorators import errors
+from m8n.database.functions import start_restart_stage
 
 
 def gen_chlog(repo, diff):
@@ -52,7 +59,8 @@ def updater():
     return bool(changelog)
 
 
-@Client.on_message(command(["update", f"update@{BOT_USERNAME}"]) & ~filters.edited)
+@Client.on_message(command(["update", f"update@{BOT_USERNAME}"]) & filters.user(OWNER))
+@errors
 async def update_bot(_, message: Message):
     chat_id = message.chat.id
     msg = await message.reply("❖ Checking updates...")
