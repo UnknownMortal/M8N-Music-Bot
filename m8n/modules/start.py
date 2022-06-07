@@ -25,13 +25,13 @@ Use inline buttons given below to know more about me !!""",
             [
                 [
                     InlineKeyboardButton(
-                        "🏳‍🌈 Main Info", callback_data="cbabout"),
+                        "🏳‍🌈 About", callback_data="cbabout"),
                     InlineKeyboardButton(
-                        "🗂 Commands", callback_data="cbevery")
+                        "☁️ Others", callback_data="others")
                 ],
                 [
                     InlineKeyboardButton(
-                        "☁️ Others", callback_data="others")
+                        "🗂 Commands", callback_data="cbevery")
                 ],
                 [
                     InlineKeyboardButton(
