@@ -85,11 +85,6 @@
             "required": true,
             "value": "5058236569"
         },
-        "DURATION_LIMIT": {
-            "description": "filled, don't change this !!",
-            "required": true,
-            "value": "999"
-        },
         "BOT_TOKEN": {
             "description": "fill with your bot token get from @BotFather on telegram",
             "required": true,
