@@ -23,17 +23,17 @@ Use inline buttons given below to know more about me !!""",
             [
                 [
                     InlineKeyboardButton(
-                        "🏳‍🌈 Main Info", callback_data="cbabout"),
-                    InlineKeyboardButton(
-                        "🗂 Commands", callback_data="cbevery")
-                ],
-                [
+                        "🏳‍🌈 About", callback_data="cbabout"),
                     InlineKeyboardButton(
                         "☁️ Others", callback_data="others")
                 ],
                 [
                     InlineKeyboardButton(
-                        "✚ Add Bot in Your Group ✚", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "🗂 Commands", callback_data="cbevery")
+                ],
+                [
+                    InlineKeyboardButton(
+                        "✚ Click here to Summon Me", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ]
                 
            ]
