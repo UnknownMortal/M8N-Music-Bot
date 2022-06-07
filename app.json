@@ -20,6 +20,11 @@
             "required": true,
             "value": ""
         },
+        "BG_IMG": {
+            "description": "Fill with Telegraph image Link for Thumbnail !!",
+            "required": true,
+            "value": ""
+        },
         "ASSNAME": {
             "description": "Fill with your music Assistant's Name",
             "required": true,
