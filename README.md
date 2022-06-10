@@ -41,6 +41,17 @@
 - `/userbotleaveall` - remove assistant of all groups
 
 
+## 🖇 Prerequisites
+
+> In order to avoid conflicts in your project, you must have/installed
+
+- [Python3.9](https://www.python.org/downloads/release/python-390/)
+- [Telegram API Key](https://docs.pyrogram.org/intro/setup#api-keys)
+- [Telegram Bot Token](https://t.me/botfather)
+- [MongoDB URI](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_footprint_row_search_brand_phrase_intent_test_atlas_mobile&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=p&utm_ad_campaign_id=13277278264&adgroup=124506944562&gclid=EAIaIQobChMI9ITXp4-i-AIVjTgrCh224AYxEAAYASAAEgImx_D_BwE)
+- [Pyrogram String Session](https://t.me/M8N_SESSION_BOT)
+
+
 ### 🚨 Generate String Session
       @M8N_SESSION_BOT by using this bot
 
