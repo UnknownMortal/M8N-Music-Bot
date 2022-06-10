@@ -56,7 +56,7 @@ Check out all the commands given below by Click on the given inline buttons !!""
                     InlineKeyboardButton("Everyone", callback_data="cbevery"),
                     InlineKeyboardButton("Group Admins", callback_data="cbadmins"),
                 ],[
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbhome")
+                    InlineKeyboardButton("⬅️ Back", callback_data="cbhome")
                 ],
             ]
         ),
@@ -96,7 +96,7 @@ async def all_set(_, query: CallbackQuery):
                     InlineKeyboardButton(
                         "Sudo/Owner", callback_data="cbsudo")
                 ],
-              [InlineKeyboardButton("⬅️ Go Back", callback_data="cbhome")]]
+              [InlineKeyboardButton("⬅️ Back", callback_data="cbhome")]]
         ),
     )
 
@@ -126,7 +126,7 @@ async def sudo_set(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbevery")
+                    InlineKeyboardButton("⬅️ Back", callback_data="cbevery")
                 ],
             ]
         ),
@@ -161,7 +161,7 @@ async def admin_set(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🔙 Go Back", callback_data="cbevery")
+                    InlineKeyboardButton("⬅️ Back", callback_data="cbevery")
                 ],
             ]
         ),
@@ -218,7 +218,7 @@ Only admins can use this buttons📍""",
                     InlineKeyboardButton("Updates 🤖", url=f"https://t.me/{UPDATE}")
                 ],
             [InlineKeyboardButton("Basic Guide & Full Set-up", callback_data="setup")],
-            [InlineKeyboardButton("🔙  Back Home", callback_data="cbhome")]]
+            [InlineKeyboardButton("⬅️ Back", callback_data="cbhome")]]
         ),
     )
 
@@ -243,7 +243,7 @@ Please don't forget to Join our Group :
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🔙 Go Back", callback_data="others")
+                    InlineKeyboardButton("⬅️ Back", callback_data="others")
                 ],
             ]
         ),
