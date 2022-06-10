@@ -648,7 +648,7 @@ async def nonabout(_, query: CallbackQuery):
                     InlineKeyboardButton("Support 🚶", url=f"https://t.me/{SUPPORT}"),
                     InlineKeyboardButton("Updates 🤖", url=f"https://t.me/{UPDATE}")
                 ],
-              [InlineKeyboardButton("🔙  Back Menu", callback_data="cbmenu")]]
+              [InlineKeyboardButton("⬅️ Back", callback_data="cbmenu")]]
         ),
     )
 
