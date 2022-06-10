@@ -52,7 +52,7 @@
 - [Pyrogram String Session](https://t.me/M8N_SESSION_BOT)
 
 
-### 🚨 Generate String Session (BOT)
+### 🚨 Generate String Session
       @M8N_SESSION_BOT by using this bot
 
 
