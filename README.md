@@ -79,8 +79,8 @@ Distributed under the [GNU General Public License v3.0 License](https://github.c
 <br>
  
 - CallsMusic 
-- PavanMagar
-- Pyrogram
-- Mortal
-- M8N
 - PyTgCalls
+- Pyrogram
+- @Cool_Mortal
+- @M8N_OFFICIAL
+- @Its_romeoo
