@@ -12,7 +12,7 @@
 - [PyTgCalls](https://github.com/pytgcalls/pytgcalls)
 
 ### Bot Commands 🗂️
-#### For all in group
+#### For all users of Bot
 - `/play <reply/url>` - Youtube url
 - `/play <reply audio>`- Song file to play song
 - `/play <song name>` - Play song you requested
