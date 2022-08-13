@@ -82,12 +82,11 @@ Distributed under the [GNU General Public License v3.0 License](https://github.c
 </details>
 
 <details>
-<summary><b>🌟 Click here to see Credits </b></summary>
+<summary><b>Click here to see Credits </b></summary>
 <br>
  
 - CallsMusic 
 - PyTgCalls
 - Pyrogram
-- @Cool_Mortal
 - @M8N_OFFICIAL
 - @Its_romeoo
