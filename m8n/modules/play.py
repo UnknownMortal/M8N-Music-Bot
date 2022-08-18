@@ -226,7 +226,7 @@ async def play(_, message: Message):
             "🔴 __**Music player is turned off, ask the admin to turn on it on!**__"
         )
         return
-    lel = await message.reply("🔄 **Processing...**")
+    lel = await message.reply("**⚡**")
 
     chid = message.chat.id
 
@@ -302,7 +302,7 @@ async def play(_, message: Message):
     url = get_url(message)
 
     if audio:
-        if round(audio.duration / 60) > DURATION_LIMIT:
+        if round(audio.duration / 900) > DURATION_LIMIT:
             raise DurationLimitError(
                 f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
@@ -451,10 +451,10 @@ async def play(_, message: Message):
             return await lel.edit(
                 "❌ **Song not found! Try searching with the correct title\nExample » /play 295**"
             )
-        await lel.edit("🔎 **Finding the song...**")
+        await lel.edit("⚡**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("🌟 **Processing sounds...**")
+        await lel.edit(" **⚡**")
         try:
             results = YoutubeSearch(query, max_results=5).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
